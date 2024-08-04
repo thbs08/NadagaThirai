@@ -8,133 +8,171 @@
     <link rel="stylesheet" href="moviezone.css">
     <title>NadagaThirai – Thabassum Watch Online</title>
 </head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        overflow: hidden;
+        background-color: #803a81e1;
+    }
+
+    .navbar a {
+        border-radius: 20%;
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .popup-content {
+        background-color: #ffffff9a;
+        border-radius: 5%;
+        margin: 9% auto;
+        padding: 20px;
+        /* border: 1px solid rgb(0, 0, 0); */
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
 <body>
-    <section class="container">
-        <div class="head">
+<div class="navbar">
+    <a href="index.html"><b>Home</b></a>
+    <a href="contact.html"><b>Contact</b></a>
+    <a href="#account" id="account-btn"><b>Account</b></a>
+</div>
+<div id="profile-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <h2>User Profile</h2>
+        <br>
+        <p>Name  : <b>Thabassum Aslam</b></p>
+        <p>e-mail: <b>thabassum.aslam@gmail.com</b></p>
+        <p>Status: <b>Contributor 💫</b></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const accountBtn = document.getElementById('account-btn');
+        const popup = document.getElementById('profile-popup');
+        const closeBtn = document.getElementById('close-btn');
+
+        accountBtn.onclick = function() {
+            popup.style.display = 'block';
+        }
+
+        closeBtn.onclick = function() {
+            popup.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        }
+    });
+</script>
+
+<body>
+    <!-- <section class="container">
+        <!-- <div class="topnav" id="myTopnav">
+            <a href="index.html" class="active">Home</a>
+            <a href="#news">Account</a>
+            <a href="contact.html">Contact</a>
+            <a href="#about">About</a>
+            <!-- <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()"> -->
+                <i class="fa fa-bars"></i>
+            </a>
+        </div> --> -->
+        <!-- <div class="head">
             <img src="assests/netflixlogo.png" alt="">
         </div>
-    </section>
+          <div class="main"> -->
+
+          </div>
+    </section> -->
+    
     <div class="home-image">
         <div class="home-image-text">
             <img class="money" src="assests/monetharis.png" alt="">
             <p>
             </p>
 
-            <a style="text-decoration: none" href="assests/MoneyH.mp4">
-            <p class="play-button">Play
+            <a style="text-decoration: none" href="assests/koothu.mp4">
+            <p class="play-button">  Play🎬
                 <img src="assests/play.png" alt="">
             </p>
             </a>
         </div>
 
     </div>
+    <div class="banner-container">
+        
+    </div>
     <div class="original">
-        <h3 class="no-title">Our Prides</h3>
         <div class="no">
             <img src="assests/kodam.jpg" alt="">
             <img src="assests/og1.jpg" alt="">
             <img src="assests/wb.jpg" alt="">
             <img src="assests/group.jpg" alt="">
             <img src="assests/dress.jpeg" alt="">
-            <img src="assests/drum.jpg" alt="">
             <img src="assests/bomma.jpg" alt="">
- 
-            <!-- <img src="assests/poster8.jfif" alt="">
-            <img src="assests/poster9.jfif" alt="">
-            <img src="assests/poster10.jfif" alt="">
-            <img src="assests/poster11.jfif" alt="">
-            <img src="assests/poster12.jfif" alt=""> -->
         </div>
     </div>
-<!-- 
-    <div class="original">
-        <h3 class="no-title">Top Rated</h3>
-        <div class="no">
-            <img src="assests/ro1.jpg" alt="">
-            <img src="assests/poster14.jpg" alt="">
-            <img src="assests/ro8.jpg" alt="">
-            <img src="assests/poster18.jpg" alt="">
-            <img src="assests/poster19.jpg" alt="">
-            <img src="assests/poster22.jpeg" alt="">
-            <img src="assests/poster18.jpg" alt="">
-            <img src="assests/poster8.jfif" alt="">
-            <img src="assests/poster9.jfif" alt="">
-            <img src="assests/poster10.jfif" alt="">
-            <img src="assests/poster11.jfif" alt="">
-            <img src="assests/poster12.jfif" alt="">
-        </div>
-    </div>
-
-    <div class="original1">
-        <h3 class="no-title">Comedy Movies</h3>
-        <div class="no">
-            <img src="assests/co1.jpg" alt="">
-            <img src="assests/co2.jpg" alt="">
-            <img src="assests/co3.png" alt="">
-            <img src="assests/co4.jpg" alt="">
-            <img src="assests/co5.jpg" alt="">
-            <img src="assests/co6.jpg" alt="">
-            <img src="assests/co7.jpg" alt="">
-            <img src="assests/co8.jpg" alt="">
-            <img src="assests/poster1.jpg" alt="">
-            <img src="assests/ro4.jpg" alt="">
-            <img src="assests/poster22.jpeg" alt="">
-            <img src="assests/poster18.jpg" alt="">
-            <img src="assests/poster5.jfif" alt="">
-            <img src="assests/poster6.jpg" alt="">
-            <img src="assests/poster7.jfif" alt="">
-            <img src="assests/poster1.jpg" alt="">
-            <img src="assests/poster3.jfif" alt="">
-            <img src="assests/poster10.jfif" alt="">
-        </div>
-    </div>
-
-    <div class="original1">
-        <h3 class="no-title">Romantic Movies</h3>
-        <div class="no">
-            <img src="assests/ro1.jpg" alt="">
-            <img src="assests/ro2.jpg" alt="">
-            <img src="assests/ro3.jpg" alt="">
-            <img src="assests/ro4.jpg" alt="">
-            <img src="assests/ro6.jpg" alt="">
-            <img src="assests/ro7.jpg" alt="">
-            <img src="assests/ro8.jpg" alt="">
-            <img src="assests/poster1.jpg" alt="">
-            <img src="assests/poster22.jpeg" alt="">
-            <img src="assests/co7.jpg" alt="">
-            <img src="assests/co4.jpg" alt="">
-            <img src="assests/co3.png" alt="">
-            <img src="assests/poster7.jfif" alt="">
-            <img src="assests/co8.jpg" alt="">
-            <img src="assests/poster7.jfif" alt="">
-            <img src="assests/poster1.jpg" alt="">
-            <img src="assests/poster3.jfif" alt="">
-            <img src="assests/poster10.jfif" alt="">
-        </div>
-    </div>
-    <div class="original1">
-        <h3 class="no-title">Action Movies</h3>
-        <div class="no">
-            <img src="assests/poster13.jpg" alt="">
-            <img src="assests/poster14.jpg" alt="">
-            <img src="assests/poster19.jpg" alt="">
-            <img src="assests/poster16.jpg" alt="">
-            <img src="assests/poster17.jpg" alt="">
-            <img src="assests/poster18.jpg" alt="">
-            <img src="assests/poster20.jpg" alt="">
-            <img src="assests/poster12.jfif" alt="">
-            <img src="assests/poster22.jpeg" alt="">
-            <img src="assests/poster10.jfif" alt="">
-            <img src="assests/poster11.jfif" alt="">
-            <img src="assests/poster12.jfif" alt="">
-            <img src="assests/poster5.jfif" alt="">
-            <img src="assests/poster6.jpg" alt="">
-            <img src="assests/poster7.jfif" alt="">
-            <img src="assests/poster1.jpg" alt="">
-            <img src="assests/poster19.jpg" alt="">
-            <img src="assests/poster10.jfif" alt=""> -->
-        </div>
-    </div>
+    <footer>
+        <a href="donate.html">Donate</a>
+        <a href="creators.html">Creators</a>
+    </footer>
+    <script>
+        const video = document.getElementById('mainVideo');
+        const muteButton = document.getElementById('muteButton');
+        
+        muteButton.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteButton.textContent = video.muted ? 'Unmute' : 'Mute';
+        });
+    </script>
 
 </body>
 </html>
