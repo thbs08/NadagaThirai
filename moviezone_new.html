@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/nficon.ico">
+    <link rel="stylesheet" href="moviezone.css">
+    <title>NadagaThirai – Thabassum Watch Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar, .footer {
+            overflow: hidden;
+            background-color: #0f0e0fe1;
+            padding: 10px;
+        }
+
+        .navbar a, .footer a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover, .footer a:hover {
+            background-color: #e3a3f1;
+            color: black;
+        }
+
+        .section-title {
+            font-size: 30px; /* Make the font larger */
+            color: #ffffff; /* White text */
+            text-align: center; /* Center the title */
+            margin-bottom: 20px;
+            padding: 10px;
+            background: linear-gradient(135deg, #803a81, #ff5733); /* Gradient background */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            font-family: 'Brush Script MT', cursive; /* Artistic font */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+        }
+
+        .movie-row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .movie-tile {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+            border-radius: 20px;
+            margin: 10px;
+            overflow: hidden;
+        }
+
+        .movie-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-tile:hover img {
+            transform: scale(1.1);
+        }
+
+        .movie-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .movie-tile:hover .movie-overlay {
+            opacity: 1;
+        }
+
+        .movie-overlay h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #582a5121;
+            border-radius: 5px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .modal-content video {
+            width: 100%;
+            height: auto;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .recommendations {
+            margin-top: 20px;
+        }
+
+        .recommendations img {
+            width: 100px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        /* Account Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Darker black background */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #333; /* Dark background for the popup */
+            border-radius: 10px;
+            padding: 30px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            color: #fff;
+            position: relative; /* For the exit button positioning */
+        }
+
+        .popup-content h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #ff5733; /* Accent color */
+        }
+
+        .popup-content p {
+            margin: 10px 0;
+        }
+
+        .exit-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff5733; /* Accent color */
+            border: none;
+            color: #fff;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .exit-btn:hover {
+            background-color: #e03e28; /* Darker accent color */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html"><b>Home</b></a>
+        <a href="contact.html"><b>Contact</b></a>
+        <a href="#account" id="account-btn"><b>Account</b></a>
+    </div>
+
+    <div id="profile-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="close-btn">&times;</span>
+            <h2>User Profile</h2>
+            <br>
+            <p>Name  : <b>Thabassum Aslam</b></p>
+            <p>e-mail: <b>thabassum.aslam@gmail.com</b></p>
+            <p>Status: <b>Contributor 💫</b></p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const accountBtn = document.getElementById('account-btn');
+            const popup = document.getElementById('profile-popup');
+            const closeBtn = document.getElementById('close-btn');
+    
+            accountBtn.onclick = function() {
+                popup.style.display = 'block';
+            }
+    
+            closeBtn.onclick = function() {
+                popup.style.display = 'none';
+            }
+    
+            window.onclick = function(event) {
+                if (event.target == popup) {
+                    popup.style.display = 'none';
+                }
+            }
+        });
+    </script>
+<!-- 
+    <div class="home-image">
+        <div class="home-image-text">
+            <img class="money" src="assets/monetharis.png" alt="">
+            <a href="assets/koothu.mp4" id="start-btn" class="btn">
+                <p class="play-button"> <i>  Play 
+
+                </i>
+                    <img src="assests/play.png" alt="">
+                </p>
+        </div>
+    </div> -->
+
+    <div class="section">
+        <h2 class="section-title">📽️ Iyal</h2>
+        <div class="banner-container">
+        <div class="movie-row">
+            <div class="movie-tile">
+                <img src="./assests/oyil.jpg" alt="oyilattam" data-video="oyilattam.mp4" data-recommend="recommend1.mp4">
+                <div class="movie-overlay">
+                    <h3>Oyilattam</h3>
+                </div>
+
+            </div>
+            <div class="movie-tile">
+                <img src="./assests/oyil3.png" alt="Naadgam 2" data-video="silambattam.mp4" data-recommend="recommend2.mp4">
+                <div class="movie-overlay">
+                    <h3>Silambattam</h3>
+                </div>
+            </div>
+            <div class="movie-tile">
+                <img src="./assests/oyil4.png" alt="Naadgam 2" data-video="puliyattam.mp4" data-recommend="recommend2.mp4">
+                <div class="movie-overlay">
+                    <h3>Puliyattam</h3>
+                </div>
+            </div>
+            <div class="movie-tile">
+                <img src="./assests/oyil5.png" alt="Naadgam 2" data-video="therkoothu.mp4" data-recommend="recommend2.mp4">
+                <div class="movie-overlay">
+                    <h3>Therkoothu</h3>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <video id="mainVideo" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const movieTiles = document.querySelectorAll('.movie-tile');
+            const videoModal = document.getElementById('video-modal');
+            const videoContainer = document.getElementById('video-container');
+            const closeModal = document.getElementById('close-modal');
+    
+            movieTiles.forEach(tile => {
+                tile.addEventListener('click', function() {
+                    const videoSrc = this.getAttribute('data-video');
+                    videoContainer.innerHTML = `
+                        <video controls autoplay>
+                            <source src="${videoSrc}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                    videoModal.style.display = 'flex';
+                });
+            });
+    
+            closeModal.onclick = function() {
+                videoModal.style.display = 'none';
+                videoContainer.innerHTML = '';  // Clear video content
+            };
+    
+            window.onclick = function(event) {
+                if (event.target === videoModal) {
+                    videoModal.style.display = 'none';
+                    videoContainer.innerHTML = '';  // Clear video content
+                }
+            };
+        });
+    </script>
+
+<div class="footer">
+    <a href="donate.html">Donate</a>
+    <a href="contact.html">Creators</a>
+</div>
+
+</body>
+</html>

@@ -12,6 +12,8 @@
 <style>
     body {
         font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
         margin: 0;
         padding: 0;
     }
@@ -19,6 +21,7 @@
     .navbar {
         overflow: hidden;
         background-color: #803a81e1;
+        padding: 10px;
     }
 
     .navbar a {
@@ -29,6 +32,7 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
     }
 
     .navbar a:hover {
@@ -36,143 +40,181 @@
         color: black;
     }
 
-    .popup {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
+    .home-image {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .home-image-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .home-image img {
         width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-        padding-top: 60px;
+        height: auto;
     }
 
-    .popup-content {
-        background-color: #ffffff9a;
-        border-radius: 5%;
-        margin: 9% auto;
-        padding: 20px;
-        /* border: 1px solid rgb(0, 0, 0); */
-        width: 80%;
-        max-width: 300px;
-    }
-
-    .close-btn {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
+    .play-button {
+        font-size: 18px;
         font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50px;
+        padding: 10px 20px;
+        cursor: pointer;
+        display: inline-block;
+        color: white;
     }
 
-    .close-btn:hover,
-    .close-btn:focus {
-        color: black;
+    .play-button img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+
+    .original {
+        margin: 20px;
+    }
+
+    .no {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .no img {
+        width: 280px;
+        height: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .no img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .banner-container {
+        padding: 20px;
+        text-align: center;
+    }
+
+    footer {
+        background-color: #803a81e1;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        margin-top: 20px;
+    }
+
+    footer a {
+        color: #f2f2f2;
         text-decoration: none;
-        cursor: pointer;
+        padding: 0 10px;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    .made-for-you {
+        margin: 50px;
+        padding:90px
+    }
+
+    .made-for-you h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .made-for-you .tiles {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .made-for-you .tiles img {
+        width: 400px;
+        height: 400px;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .made-for-you .tiles img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 </style>
+
 </head>
 <body>
+
 <div class="navbar">
-    <a href="index.html"><b>Home</b></a>
+    <a href="moviezone.html"><b>Home</b></a>
+    <a href="menu.html"><b>Menu</b></a>
     <a href="contact.html"><b>Contact</b></a>
-    <a href="#account" id="account-btn"><b>Account</b></a>
+    <a href="index.html"><b>Log Out</b></a>
 </div>
-<div id="profile-popup" class="popup">
-    <div class="popup-content">
-        <span class="close-btn" id="close-btn">&times;</span>
-        <h2>User Profile</h2>
-        <br>
-        <p>Name  : <b>Thabassum Aslam</b></p>
-        <p>e-mail: <b>thabassum.aslam@gmail.com</b></p>
-        <p>Status: <b>Contributor 💫</b></p>
+
+<div class="home-image">
+    <video id="koothuVideo" width="100%" autoplay muted>
+        <source src="assests/koothu.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="home-image-text">
+        <!-- <div class="play-button" onclick="togglePlayPause()">
+            <i>Play</i>
+            <img src="assests/play.png" alt="Play Icon">
+        </div> -->
+    <a style="text-decoration: none" href="assests/koothu.mp4">
+        <p class="play-button">  <i>Play</i>
+            <img src="assests/play.png" alt="">
+        </p>
+        </a>
     </div>
 </div>
+
+
+<div class="banner-container">
+    <h1>Welcome to NadagaThirai – Thabassum Watch Online</h1>
+</div>
+
+<div class="made-for-you">
+    <h2>Made for You...</h2>
+    <div class="no">
+        <img src="assests/kodam.jpg" alt="Kodam">
+        <img src="assests/og1.jpg" alt="OG1">
+        <img src="assests/wb.jpg" alt="WB">
+        <!-- <img src="assests/group.jpg" alt="Group"> -->
+        <!-- <img src="assests/dress.jpeg" alt="Dress"> -->
+        <!-- <img src="assests/bomma.jpg" alt="Bomma"> -->
+    </div>
+</div>
+
+<footer>
+    <a href="donate.html">Donate</a>
+    <a href="creators.html">Creators</a>
+</footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const accountBtn = document.getElementById('account-btn');
-        const popup = document.getElementById('profile-popup');
-        const closeBtn = document.getElementById('close-btn');
+    const video = document.getElementById('koothuVideo');
+    let isPlaying = false;
 
-        accountBtn.onclick = function() {
-            popup.style.display = 'block';
+    function togglePlayPause() {
+        if (isPlaying) {
+            video.pause();
+        } else {
+            video.play();
+            video.muted = false;
         }
-
-        closeBtn.onclick = function() {
-            popup.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == popup) {
-                popup.style.display = 'none';
-            }
-        }
-    });
+        isPlaying = !isPlaying;
+    }
 </script>
-
-<body>
-    <!-- <section class="container">
-        <!-- <div class="topnav" id="myTopnav">
-            <a href="index.html" class="active">Home</a>
-            <a href="#news">Account</a>
-            <a href="contact.html">Contact</a>
-            <a href="#about">About</a>
-            <!-- <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()"> -->
-                <i class="fa fa-bars"></i>
-            </a>
-        </div> --> -->
-        <!-- <div class="head">
-            <img src="assests/netflixlogo.png" alt="">
-        </div>
-          <div class="main"> -->
-
-          </div>
-    </section> -->
-    
-    <div class="home-image">
-        <div class="home-image-text">
-            <img class="money" src="assests/monetharis.png" alt="">
-            <p>
-            </p>
-
-            <a style="text-decoration: none" href="assests/koothu.mp4">
-            <p class="play-button">  Play🎬
-                <img src="assests/play.png" alt="">
-            </p>
-            </a>
-        </div>
-
-    </div>
-    <div class="banner-container">
-        
-    </div>
-    <div class="original">
-        <div class="no">
-            <img src="assests/kodam.jpg" alt="">
-            <img src="assests/og1.jpg" alt="">
-            <img src="assests/wb.jpg" alt="">
-            <img src="assests/group.jpg" alt="">
-            <img src="assests/dress.jpeg" alt="">
-            <img src="assests/bomma.jpg" alt="">
-        </div>
-    </div>
-    <footer>
-        <a href="donate.html">Donate</a>
-        <a href="creators.html">Creators</a>
-    </footer>
-    <script>
-        const video = document.getElementById('mainVideo');
-        const muteButton = document.getElementById('muteButton');
-        
-        muteButton.addEventListener('click', () => {
-            video.muted = !video.muted;
-            muteButton.textContent = video.muted ? 'Unmute' : 'Mute';
-        });
-    </script>
 
 </body>
 </html>
